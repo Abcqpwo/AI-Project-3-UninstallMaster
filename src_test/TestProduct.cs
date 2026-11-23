@@ -7,33 +7,33 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace LightNote
+namespace TestProduct
 {
     static class C
     {
-        public const string Name = "轻便记事";
+        public const string Name = "测试产物";
         public const string Version = "1.0.0";
         public const string Publisher = "豆包测试";
-        public const string KeyUninstall = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\LightNote";
-        public const string KeyApp = @"Software\LightNote";
-        public const string ExeName = "轻便记事.exe";
+        public const string KeyUninstall = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\TestProduct";
+        public const string KeyApp = @"Software\TestProduct";
+        public const string ExeName = "测试产物.exe";
     }
 
     static class P
     {
         public static string DefaultInstallDir()
         {
-            return Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs"), "LightNote");
+            return Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs"), "TestProduct");
         }
 
         public static string RoamingDir()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LightNote");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TestProduct");
         }
 
         public static string LocalDir()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LightNote");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TestProduct");
         }
 
         public static string ExePath(string dir)
@@ -252,10 +252,10 @@ namespace LightNote
             btnBrowse.Click += delegate
             {
                 FolderBrowserDialog fb = new FolderBrowserDialog();
-                fb.Description = "选择安装到哪里（会在这个文件夹里新建 LightNote 目录）";
+                fb.Description = "选择安装到哪里（会在这个文件夹里新建 TestProduct 目录）";
                 if (fb.ShowDialog(this) == DialogResult.OK)
                 {
-                    txtDir.Text = Path.Combine(fb.SelectedPath, "LightNote");
+                    txtDir.Text = Path.Combine(fb.SelectedPath, "TestProduct");
                 }
             };
             pWelcome.Controls.Add(btnBrowse);
@@ -848,8 +848,8 @@ namespace LightNote
                     "「" + C.Name + "」已卸载。\n\n" +
                     "下面这些东西被故意留下了，可以去「卸载大师」里清理：\n" +
                     "· 安装目录里剩下的文件\n" +
-                    "· 笔记和配置（%AppData%\\LightNote）\n" +
-                    "· 缓存（%LocalAppData%\\LightNote）\n" +
+                    "· 笔记和配置（%AppData%\\TestProduct）\n" +
+                    "· 缓存（%LocalAppData%\\TestProduct）\n" +
                     "· 桌面和开始菜单的快捷方式\n" +
                     "· 注册表里的设置项",
                     "卸载完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
